@@ -1,3 +1,6 @@
+/**
+ * ! This component will replace 'Core' component in the future
+ */
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
