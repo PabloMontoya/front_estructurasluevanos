@@ -1,1 +1,0 @@
-// TODO: create function to format dates for mongoose

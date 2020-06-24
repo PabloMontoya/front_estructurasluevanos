@@ -14,9 +14,9 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import AddBoxIcon from '@material-ui/icons/AddBox';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import NotesCreate from './NotesCreate';
 
 const descendingComparator = (a, b, orderBy) => {
   if (b[orderBy] < a[orderBy]) {
@@ -98,7 +98,7 @@ const useToolbarStyles = makeStyles(theme => ({
   },
 }));
 
-const EnhancedTableToolbar = props => {
+const EnhancedTableToolbar = ({refetch}) => {
   const classes = useToolbarStyles();
 
   return (
@@ -109,7 +109,7 @@ const EnhancedTableToolbar = props => {
 
       <Tooltip title="Agregar">
         <IconButton aria-label="Agregar">
-          <AddBoxIcon style={{fontSize:'xx-large', color:'#3f51b5'}} />
+          <NotesCreate refetch={refetch} />
         </IconButton>
       </Tooltip>
 
@@ -141,10 +141,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const EnhancedTable = ({headCells, rows}) => {
+const EnhancedTable = ({headCells, rows, refetch}) => {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('calories');
+  const [orderBy, setOrderBy] = React.useState('numOrden');
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -168,7 +168,7 @@ const EnhancedTable = ({headCells, rows}) => {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar />
+        <EnhancedTableToolbar refetch={refetch} />
         <TableContainer>
           <Table
             className={classes.table}

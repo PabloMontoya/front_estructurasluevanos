@@ -52,7 +52,7 @@ function Notes({setTitle}) {
   return (
     <>
       {notes.length > 0 ? (
-        <Table headCells={headCells} rows={notes} />
+        <Table headCells={headCells} rows={notes} refetch={fetchNotes} />
       ) : (
           <CircularProgress />
       )}
